@@ -84,6 +84,7 @@ const contactsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addContact.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
         state.items = [...state.items, payload];
         state.error = null;
       })
