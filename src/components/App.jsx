@@ -41,9 +41,8 @@ export const App = () => {
               <Button text="Add Contact" clickHandler={showAddForm} />
             </>
           )}
-          <ContactsList />
-
           {isAddFormShown && <AddForm closeForm={closeAddForm} />}
+          <ContactsList />
         </>
       ) : (
         <Button text="Show contacts" clickHandler={showContactsList} />
