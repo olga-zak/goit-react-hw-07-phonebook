@@ -7,6 +7,7 @@ import { getIsLoading, getError } from 'redux/contacts/contacts-selectors';
 import { Button } from './Button/Button';
 import { ContactsList } from './ContactsList/ContactsList';
 import { AddForm } from './AddForm/AddForm';
+import { FilterForm } from './FilterForm/FilterForm';
 
 export const App = () => {
   const [isContactsListShown, setIsContactsListShown] = useState(false);
@@ -34,10 +35,14 @@ export const App = () => {
       {isContactsListShown ? (
         <>
           {isLoading && <h1>LoAdInG...</h1>}
-          <ContactsList />
           {!isAddFormShown && !isLoading && !error && (
-            <Button text="Add Contact" clickHandler={showAddForm} />
+            <>
+              <FilterForm />
+              <Button text="Add Contact" clickHandler={showAddForm} />
+            </>
           )}
+          <ContactsList />
+
           {isAddFormShown && <AddForm closeForm={closeAddForm} />}
         </>
       ) : (
