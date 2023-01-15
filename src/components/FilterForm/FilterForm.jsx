@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { getFilterValue } from 'redux/filter/filterSlice';
 
+import { Label, Input } from './FilterForm.styled';
+
 export const FilterForm = () => {
   const dispatch = useDispatch();
   const handleChange = event => {
@@ -8,9 +10,9 @@ export const FilterForm = () => {
     dispatch(getFilterValue(text));
   };
   return (
-    <label>
+    <Label>
       Find contact by name:
-      <input
+      <Input
         type="text"
         name="filter"
         //value={filter}
@@ -19,6 +21,6 @@ export const FilterForm = () => {
         onChange={handleChange}
         required
       />
-    </label>
+    </Label>
   );
 };

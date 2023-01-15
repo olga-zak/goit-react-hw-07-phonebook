@@ -8,6 +8,9 @@ import { Button } from './Button/Button';
 import { ContactsList } from './ContactsList/ContactsList';
 import { AddForm } from './AddForm/AddForm';
 import { FilterForm } from './FilterForm/FilterForm';
+import { Loader } from './Loader/Loader';
+
+import { Wrapper, FormsWrapper } from './App.styled';
 
 export const App = () => {
   const [isContactsListShown, setIsContactsListShown] = useState(false);
@@ -34,15 +37,24 @@ export const App = () => {
     <>
       {isContactsListShown ? (
         <>
-          {isLoading && <h1>LoAdInG...</h1>}
-          {!isAddFormShown && !isLoading && !error && (
-            <>
-              <FilterForm />
-              <Button text="Add Contact" clickHandler={showAddForm} />
-            </>
-          )}
-          {isAddFormShown && <AddForm closeForm={closeAddForm} />}
-          <ContactsList />
+          {isLoading && <Loader />}
+          <Wrapper>
+            {!isLoading && <ContactsList />}
+
+            <FormsWrapper>
+              {!isLoading && !error && (
+                <>
+                  <FilterForm />
+                  {!isAddFormShown && (
+                    <Button text="Add Contact" clickHandler={showAddForm} />
+                  )}
+                </>
+              )}
+              {isAddFormShown && !isLoading && (
+                <AddForm closeForm={closeAddForm} />
+              )}
+            </FormsWrapper>
+          </Wrapper>
         </>
       ) : (
         <Button text="Show contacts" clickHandler={showContactsList} />

@@ -1,3 +1,5 @@
+import { ButtonStyled } from './Button.styled';
+
 export const Button = ({ text, clickHandler }) => {
-  return <button onClick={clickHandler}>{text}</button>;
+  return <ButtonStyled onClick={clickHandler}>{text}</ButtonStyled>;
 };

@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operations';
 
+import { Heading, Form, Label, Input } from './AddForm.styled';
+import { Button } from 'components/ContactsList/ContactsList.styled';
+
 export const AddForm = ({ closeForm }) => {
   const dispatch = useDispatch();
 
@@ -16,14 +19,19 @@ export const AddForm = ({ closeForm }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input type="text" name="name" />
-      </label>
-      <label>
-        <input type="text" name="phone" />
-      </label>
-      <button>Save</button>
-    </form>
+    <>
+      <Heading>Fill this form to add a new contact:</Heading>
+      <Form onSubmit={handleSubmit}>
+        <Label>
+          Name:
+          <Input type="text" name="name" />
+        </Label>
+        <Label>
+          Phone number:
+          <Input type="text" name="phone" />
+        </Label>
+        <Button>Save</Button>
+      </Form>
+    </>
   );
 };
